@@ -1,0 +1,209 @@
+{
+  "name": "Email Automation Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "request-intake",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "62823f00-bde5-4b44-97ab-324ab04d861d",
+      "name": "Webhook",
+      "webhookId": "1df18de3-02af-423a-bec7-e3da9bdc4e80"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7dd4d4e2-cc4c-437c-963a-e5ded7c3f184",
+              "name": "requester_name",
+              "value": "={{ $json.body.requester }}",
+              "type": "string"
+            },
+            {
+              "id": "9daa6fce-6144-43d3-b9e5-092e770aec74",
+              "name": "requester_email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "a27b96ac-aa4e-497f-b860-f430d9088fb1",
+              "name": "request_subject",
+              "value": "={{ $json.body.subject }}",
+              "type": "string"
+            },
+            {
+              "id": "b25c6886-5002-4356-9880-e65326a29838",
+              "name": "request_message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "76cb447e-7b2a-4545-8895-a2e675b737e4",
+              "name": "priority",
+              "value": "={{ $json.body.priority }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "250df683-ecd5-4738-ae24-1a0ac2e46bac",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c779eea6-1296-4cbb-985a-2cc20217c069",
+              "leftValue": "={{ $json.priority }}",
+              "rightValue": "=high",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "dc297ec1-839f-424e-8fe5-d137ced9ead9",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"status\": \"success\",\n  \"priority\":\"high\",\n  \"message\": \"Email sent successfully\",\n  \"timestamp\": \"2026-02-01T08:15:29.856-05:00\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        864,
+        0
+      ],
+      "id": "b2c1f8e6-92c1-4a48-aac3-b62f9529a047",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "fromEmail": "user@example.com",
+        "toEmail": "={{ $json.requester_email }}",
+        "subject": "={{$json.priority === \"high\" ? \"[URGENT] \" + $json.request_subject : $json.request_subject}}\n",
+        "html": "=Requester: {{$json.requester_name}}\nEmail: {{$json.requester_email}}\n\nMessage:\n{{$json.request_message}}\n\nPriority: {{$json.priority}}\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        0
+      ],
+      "id": "2aba4a10-a85c-4ed5-b0ec-ae41848cf202",
+      "name": "Send email",
+      "webhookId": "313d0a4b-d82f-4e24-ad43-86d62561b15a",
+      "credentials": {
+        "smtp": {
+          "id": "DVpkCwLLCIMs5Xt6",
+          "name": "SMTP account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "5fc0aea4-22c5-4baf-a711-b5d0ebc7e3f0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9a12b71969e74e4ca27c8cb0352d6adb83afbe04385eb5bb5fff13c7d3ee0eec"
+  },
+  "id": "yCKodvqKWKVzVz0ApLi_A",
+  "tags": []
+}
