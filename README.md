@@ -1,5 +1,6 @@
 # n8n Email Automation via Webhook
 
+[![n8n Workflow CI](https://github.com/nel023/n8n-email-automation-webhook/actions/workflows/ci.yml/badge.svg)](https://github.com/nel023/n8n-email-automation-webhook/actions/workflows/ci.yml)
 
 ## Overview
 
