@@ -21,12 +21,6 @@ jobs:
       - name: Import workflow into n8n container
         run: |
           echo "Importing workflow into n8n container..."
-
-          # Copy JSON into container
           docker cp n8n-email-automation-webhook.json $(docker compose ps -q n8n):/tmp/
-
-          # Run import inside container
           docker compose exec -T n8n n8n import:workflow --input /tmp/n8n-email-automation-webhook.json
-          
-          # Optional cleanup
           docker compose exec -T n8n rm /tmp/n8n-email-automation-webhook.json
