@@ -21,7 +21,9 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       # Step 3: Import the workflow into n8n container
-      - name: Import n8n workflow
-        run: |
-          echo "Importing workflow into n8n..."
-          docker exec -i n8n n8n import:workflow --input ./n8n-email-automation-webhook.json
+      - name: Import workflow into n8n
+  	run: |
+    	  echo "Importing workflow into n8n..."
+    	  n8n import:workflow \
+      		--input ../../n8n-email-automation-webhook.json
+
