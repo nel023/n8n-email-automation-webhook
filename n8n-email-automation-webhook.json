@@ -167,6 +167,20 @@
       "id": "a1bed056-f1ea-4abc-9ee1-988964173afe",
       "name": "AI Agent",
       "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        832,
+        208
+      ],
+      "id": "7ae6ae63-b669-475c-861b-4c92b83f6f8a",
+      "name": "Code in JavaScript",
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -240,7 +254,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "e9686a29-ca91-442f-8ed3-fd2e43088d9c",
+  "versionId": "3980fe99-6e4e-4408-b842-737086b6dfbf",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "cd06244ff93f62ae497754b845ef71b84b0bfba06557bab86f75d4ca48e6b957"
