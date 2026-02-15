@@ -155,29 +155,16 @@
       "name": "Edit Fields1"
     },
     {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        928,
-        224
-      ],
-      "id": "de99ba7c-a58b-4f83-a6f6-10b226807317",
-      "name": "Loop Over Items",
-      "disabled": true
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "name": "Replace Me",
       "typeVersion": 1,
       "position": [
-        1168,
-        576
+        720,
+        272
       ],
-      "id": "7edb35f5-c74f-48f1-bda3-2404d91e838c"
+      "id": "7edb35f5-c74f-48f1-bda3-2404d91e838c",
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -244,27 +231,9 @@
         ]
       ]
     },
-    "Loop Over Items": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Replace Me",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Replace Me": {
       "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
@@ -274,7 +243,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "a9ebce50-0f4c-4c0e-ab72-66a2e4e3ffe8",
+  "versionId": "7c3ca99f-5684-4ae1-90d7-d1572d5300a8",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "cd06244ff93f62ae497754b845ef71b84b0bfba06557bab86f75d4ca48e6b957"
