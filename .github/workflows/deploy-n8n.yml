@@ -1,5 +1,6 @@
 name: Deploy n8n Workflow
 
+# Trigger only when your n8n workflow JSON changes on master
 on:
   push:
     branches:
@@ -12,17 +13,20 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      # Step 1: Checkout the repo
+      #  Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up Docker (optional if runner already has Docker)
-      - name: Set up Docker
-        uses: docker/setup-buildx-action@v2
-
-      # Step 3: Import the workflow into n8n container
-      - name: Import workflow into n8n
+      #  Import the workflow into the running n8n container
+      - name: Import workflow into n8n container
         run: |
-          echo "Importing workflow into n8n..."
-          n8n import:workflow \
-          --input ../../n8n-email-automation-webhook.json
+          echo "Importing workflow into n8n container..."
+
+          # Copy JSON file into n8n container
+          docker cp n8n-email-automation-webhook.json $(docker-compose ps -q n8n):/tmp/
+
+          # Run the import inside the n8n container
+          docker-compose exec -T n8n n8n import:workflow --input /tmp/n8n-email-automation-webhook.json
+
+          # Optional: cleanup JSON from container
+          docker-compose exec -T n8n rm /tmp/n8n-email-automation-webhook.json
