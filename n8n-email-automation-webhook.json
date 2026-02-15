@@ -158,20 +158,6 @@
       "parameters": {
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3.1,
-      "position": [
-        464,
-        208
-      ],
-      "id": "a1bed056-f1ea-4abc-9ee1-988964173afe",
-      "name": "AI Agent",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
@@ -288,7 +274,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "6a5afe60-8ff3-4176-baa4-d1cc8426c1f9",
+  "versionId": "a9ebce50-0f4c-4c0e-ab72-66a2e4e3ffe8",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "cd06244ff93f62ae497754b845ef71b84b0bfba06557bab86f75d4ca48e6b957"
