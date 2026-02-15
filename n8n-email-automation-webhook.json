@@ -153,6 +153,20 @@
       ],
       "id": "eedd0d11-7088-4f80-9685-c45ffcf39d0f",
       "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        464,
+        208
+      ],
+      "id": "a1bed056-f1ea-4abc-9ee1-988964173afe",
+      "name": "AI Agent",
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -226,7 +240,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "00e707e2-c2ed-492c-8351-4f6f815a80c8",
+  "versionId": "e9686a29-ca91-442f-8ed3-fd2e43088d9c",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "cd06244ff93f62ae497754b845ef71b84b0bfba06557bab86f75d4ca48e6b957"
