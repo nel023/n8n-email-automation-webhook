@@ -167,6 +167,31 @@
       "id": "a1bed056-f1ea-4abc-9ee1-988964173afe",
       "name": "AI Agent",
       "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        928,
+        224
+      ],
+      "id": "de99ba7c-a58b-4f83-a6f6-10b226807317",
+      "name": "Loop Over Items",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        1168,
+        576
+      ],
+      "id": "7edb35f5-c74f-48f1-bda3-2404d91e838c"
     }
   ],
   "pinData": {},
@@ -232,6 +257,29 @@
           }
         ]
       ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -240,7 +288,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "dac6162d-bd62-4cf2-a484-b751fdd9a855",
+  "versionId": "6a5afe60-8ff3-4176-baa4-d1cc8426c1f9",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "cd06244ff93f62ae497754b845ef71b84b0bfba06557bab86f75d4ca48e6b957"
