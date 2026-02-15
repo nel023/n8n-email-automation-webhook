@@ -167,32 +167,6 @@
       "id": "a1bed056-f1ea-4abc-9ee1-988964173afe",
       "name": "AI Agent",
       "disabled": true
-    },
-    {
-      "parameters": {
-        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        832,
-        208
-      ],
-      "id": "7ae6ae63-b669-475c-861b-4c92b83f6f8a",
-      "name": "Code in JavaScript",
-      "disabled": true
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3.2,
-      "position": [
-        1088,
-        224
-      ],
-      "id": "cae483f5-96d7-452b-98d3-5f20e40d4ce7",
-      "name": "Merge",
-      "disabled": true
     }
   ],
   "pinData": {},
@@ -266,7 +240,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "d413c656-6720-4c67-8a8c-3a50c1cef9b0",
+  "versionId": "dac6162d-bd62-4cf2-a484-b751fdd9a855",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "cd06244ff93f62ae497754b845ef71b84b0bfba06557bab86f75d4ca48e6b957"
